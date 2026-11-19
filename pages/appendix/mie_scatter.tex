@@ -1,0 +1,83 @@
+% 米氏散射
+\subsubsection*{(一) 亥姆霍茲方程推導}
+自由空間中的馬克示威方程式有四條：
+\begin{align}
+    \nabla \cdot \mathbf{E} = 0 &, \qquad \nabla \cdot \mathbf{H} = 0 \label{eq:no_div}\\
+    \nabla \times \mathbf{E} &= -\mu \frac{\partial \mathbf{H}}{\partial t} \\
+    \nabla \times \mathbf{H} &= \epsilon \frac{\partial \mathbf{E}}{\partial t} \label{eq:h_func}
+\end{align}
+將式 \eqref{eq:no_div}$\sim$\eqref{eq:h_func} 利用傅立葉轉換轉換至頻域，並利用向量恆等式 \(\nabla \times \left( \nabla \mathbf{E} \right) = \nabla \left( \nabla \cdot \mathbf{E} \right) - \nabla^2 \mathbf{E}\)即可得出：
+\begin{equation}
+\nabla^2\mathbf{E} + k^2 \mathbf{E} = 0, \qquad k^2 = \omega^2 \epsilon \mu \label{eq:hem}
+\end{equation}
+
+\subsubsection*{(二) 球殼邊界條件}
+在球面 $r=a$ 上，電場與磁場的切向分量連續：
+\begin{equation}
+    \left(\mathbf{E}_{out} - \mathbf{E}_{in}\right) \times \mathbf{e}_r = 0, \qquad \left(\mathbf{H}_{out} - \mathbf{H}_{in}\right) \times \mathbf{e}_r = 0
+\end{equation}
+其中 \(\mathbf{E}_{out} = \mathbf{E}_{i} + \mathbf{E}_{s}\) 為球外場(入射場＋散射場)，\(\mathbf{E}_{in}\)為球內場，\(\mathbf{e}_r,\ \mathbf{e}_{\theta},\ \mathbf{e}_{\psi}\) 為球坐標系基向量
+
+\subsubsection{(三) 向量球面波函數}
+\textbf{1. 由純量函數建構向量解} \\
+因為直接求式\eqref{eq:hem}的的三個耦合分量並不簡單，因此改由純量函數$\psi$與位置向量$\mathbf{r}$建構兩個向量函數。
+\begin{equation}
+    \mathbf{M} = \nabla \times (\mathbf{r} \psi), \qquad \mathbf{N} = \frac{\nabla \times \mathbf{M}}{k}
+\end{equation}
+根據恆等式 \( \nabla^2 \left( \nabla \times \mathbf{A} \right) =  \nabla \times \nabla^2\mathbf{A} \) 、\(\nabla \times \nabla\mathbf{A} = 0\)
+與 \( \nabla^2 \left(\mathbf{r}\psi\right) = \mathbf{r} \nabla^2 \psi + 2 \nabla \psi\) 可整理出：
+\begin{equation}
+    \nabla^2 \mathbf{M} + k^2 \mathbf{M} = \nabla \times \left[\mathbf{r} \left(\nabla^2\mathbf{E} + k^2 \mathbf{E}\right)\right]
+\end{equation}
+因此只要$\psi$滿足純量亥姆霍茲方程，$\mathbf{M}$ 就滿足亥姆霍茲方程。又由於\(\nabla \cdot \mathbf{M} = 0\)，因此
+\begin{equation}
+    \nabla \times \mathbf{N} = \frac{1}{k} \left[ \nabla(\nabla \cdot \mathbf{M}) - \nabla^2 \mathbf{M}\right] = k \mathbf{M}
+\end{equation}
+$\mathbf{N}$也滿足向量亥姆霍茲方程且無散度。$\mathbf{M}$、$\mathbf{N}$ 皆無散度，滿足式\eqref{eq:no_div}；兩者互為旋度（差一個因子 k），與 $\mathbf{E}$、$\mathbf{H}$ 的關係相同，因此可用來展開電磁場，而$\psi$ 為其生成函數。
+
+
+\textbf{2. 純量亥姆霍茲方程的分離變數}
+$\psi$ 的亥姆霍茲方程再球座標為：
+\begin{equation}
+    \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial \psi}{\partial r} \right) + \frac{1}{r^2 \sin\theta} \frac{\partial}{\partial \theta} \left( \sin\theta \frac{\partial \psi}{\partial \theta} \right) + \frac{1}{r^2 \sin^2\theta} \frac{\partial^2 \psi}{\partial \phi^2} + k^2 \psi = 0
+\end{equation}
+令 $\psi = R\left(r\right) \Theta\left(\theta\right) \Phi \left(\phi\right)$代入後可分離成三個常微分方程。
+\begin{itemize}
+    \item[(1)] {方位角方程 
+        \begin{equation}
+            \frac{d^2 \Phi}{d\phi^2} + \ell^2 \Phi = 0 \quad \Rightarrow \quad \Phi_e = \cos\ell\phi, \quad \Phi_o = \sin\ell\phi
+        \end{equation}
+        $\Phi$ 必須以 $2\pi$ 為週期，因此 $l$ 必非負。下標 e、o 代表偶、奇。（為避免與相對折射率 m 混淆，方位角量子數記為 $l$。）
+        } 
+    \item[(2)] {極角方程
+        \begin{equation}
+            \frac{1}{\sin\theta} \frac{d}{d\theta} \left( \sin\theta \frac{d\Theta}{d\theta} \right) + \left[ n(n+1) - \frac{\ell^2}{\sin^2\theta} \right] \Theta = 0
+        \end{equation}
+        在 $\theta = 0, \pi$皆有限的解為連帶勒讓德函數，\(\Theta = P_{n}^l \left(\cos \theta\right),\ \ n = l, l+1 \dots\)
+        }
+    \item[(3)] {徑向方程
+        \begin{equation}
+            \frac{d}{dr} \left( r^2 \frac{dR}{dr} \right) + [k^2 r^2 - n(n+1)]R = 0 \label{eq:fif}
+        \end{equation}
+        令 $\rho = kr, R = \frac{Z\left(\rho\right)}{\sqrt{\rho}}$，式\eqref{eq:fif} 變為 \(n + \frac{1}{2}\) 階的貝索函數，解為：
+        \begin{equation}
+            j_n(\rho) = \sqrt{\frac{\pi}{2\rho}} J_{n+1/2}(\rho), \qquad y_n(\rho) = \sqrt{\frac{\pi}{2\rho}} Y_{n+1/2}(\rho)
+        \end{equation}
+        \begin{equation}
+            h_n^{(1)}(\rho) = j_n(\rho) + i y_n(\rho)
+        \end{equation}
+        $j_n$ 在原點有限，用於球內場與入射場；$y_n$ 在原點發散，球內不可用；$h^{\left(1\right)}_n$ 在遠處的漸近形式為
+        \begin{equation}
+            h_n^{(1)}(\rho) \approx \frac{(-i)^n e^{i\rho}}{i\rho} \quad (\rho \gg n^2)
+        \end{equation}
+        配合 $e^{-i\omega t} $即 $\frac{e^{i(kr-\omega t)}}{r}$，為向外傳播的球面波，用於散射場。以 $z\left(n\right)$ 代表上述任一種球貝索函數。
+        }
+\end{itemize}
+
+
+\textbf{3. 向量球諧函數}
+
+
+\textbf{4. 正交關係}
+
+\subsubsection*{(三) 場的級數展開} 

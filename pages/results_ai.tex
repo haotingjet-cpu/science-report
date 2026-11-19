@@ -1,0 +1,65 @@
+\subsection*{一、兩角強度比隨光學厚度的變化}
+本研究以
+\[
+    C = \frac{I(30^\circ)}{I(125^\circ)}
+\]
+作為角度分布指標。表一整理兩種粒徑在六個光學厚度下的實驗值與蒙地卡羅模擬值。當 $\tau$ 由 $0.5$ 增加至 $8$，$0.492\,\mu\mathrm{m}$ 微球的實驗 $C$ 由 $12.06$ 降至 $1.92$，$2.16\,\mu\mathrm{m}$ 微球則由 $21.71$ 降至 $3.81$。各光學厚度下，較大粒徑的 $C$ 均較高，約為較小粒徑的 $1.6$ 至 $2.4$ 倍。
+
+\begin{table}[H]
+    \centering
+    \caption{實驗與蒙地卡羅模擬的兩角強度比 $C$}
+    \label{tab:result-c}
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{ccrrr}
+        \toprule
+        粒徑 ($\mu$m) & $\tau$ & 實驗 $C$ & 模擬 $C$ & 實驗／模擬 \\
+        \midrule
+        0.492 & 0.5 & 12.06 & 13.99 & 0.86 \\
+        0.492 & 1   & 10.85 & 10.35 & 1.05 \\
+        0.492 & 2   & 7.47  & 6.21  & 1.20 \\
+        0.492 & 4   & 3.93  & 3.11  & 1.26 \\
+        0.492 & 6   & 2.62  & 2.01  & 1.30 \\
+        0.492 & 8   & 1.92  & 1.51  & 1.27 \\
+        \midrule
+        2.16  & 0.5 & 21.71 & 26.08 & 0.83 \\
+        2.16  & 1   & 17.74 & 20.04 & 0.89 \\
+        2.16  & 2   & 15.36 & 13.41 & 1.14 \\
+        2.16  & 4   & 9.35  & 7.67  & 1.22 \\
+        2.16  & 6   & 6.40  & 4.80  & 1.33 \\
+        2.16  & 8   & 3.81  & 3.45  & 1.10 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection*{二、角度分布的變化}
+隨著 $\tau$ 增加，前向散射峰逐漸降低，約 $90^\circ$ 附近的低谷也逐漸填平，角度分布趨於平坦。$\tau=8$ 時，$0.492\,\mu\mathrm{m}$ 微球的分布已接近平坦；$2.16\,\mu\mathrm{m}$ 微球仍保有部分前向峰，與其 $C$ 較高的結果一致。
+
+\subsection*{三、實驗與模擬的比較}
+蒙地卡羅模擬呈現 $C$ 隨 $\tau$ 增加而下降、且較大粒徑的 $C$ 較高的相同趨勢。當 $\tau\leq 1$，實驗值與模擬值的比值介於 $0.83$ 至 $1.05$；當 $\tau\geq 2$，實驗值比模擬值高約 $10\%$ 至 $33\%$。在 $\tau\geq2$ 時，實驗與模擬整條角度曲線的比值中位數約為 $0.94$ 至 $1.10$，但 $30^\circ$ 附近的實驗強度偏高約 $8\%$ 至 $25\%$；其中 $0.492\,\mu\mathrm{m}$ 微球在 $\tau\geq4$ 時，實驗前向散射部分明顯高於模擬。當 $\tau=0.5$、$1$ 時，整條曲線則共同偏高或偏低約 $22\%$ 至 $39\%$。比較時，各條件均沿用同一儀器倍率，未對個別曲線另行調整。
+
+同一樣品兩輪量測所得 $C$ 的差異多在 $4\%$ 以內，最大約為 $7\%$。本研究的不確定度合併考量兩輪量測差異、替換空白值造成的差異，以及角度整體偏移 $\pm0.5^\circ$ 的影響。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.98\linewidth]{image/image4_ai.png}
+    \caption{$C$ 隨光學厚度 $\tau$ 的變化。點為 10 月 24 日實驗值，線為蒙地卡羅模擬；縱軸為對數，誤差棒為合成不確定度。}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.98\linewidth]{image/image5_ai.png}
+    \caption{兩種粒徑在不同 $\tau$ 下的實驗角度分布 $I(\theta)/I(125^\circ)$。顏色由淺至深表示 $\tau=0.5$、$1$、$2$、$4$、$6$、$8$；虛線標示 $30^\circ$ 與 $125^\circ$，前者的值即為 $C$。}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.98\linewidth]{image/image6_ai.png}
+    \caption{六個光學厚度下的散射光淨強度 $I(\theta)$。實線為實驗感測器計數，虛線為蒙地卡羅模擬乘上共用儀器倍率 $k=2.71\times10^7$；點線標示 $30^\circ$ 與 $125^\circ$。}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.98\linewidth]{image/image7_ai.png}
+    \caption{12 個樣品於 10 月 24 日兩輪平均的實驗與模擬角度分布 $I(\theta)/I(125^\circ)$。實線為實驗，虛線為非偏振蒙地卡羅模擬；點線標示 $30^\circ$ 與 $125^\circ$。}
+\end{figure}
