@@ -103,10 +103,44 @@ N_0=\frac{c}{\rho\,(\pi d^3/6)}
 \end{tabular}
 \end{table}
 
-\subsection*{八、實驗量測與數據處理}
+\subsection*{八、布魯斯特角}
+當入射光以布魯斯特角作為入射角射向一介質面後，反射光會呈現垂直於入射面的單向偏振。
+
+\subsection*{(一) 布魯斯特角角度大小}
+理論指出，在布魯斯特角下，反射光與折射光垂直。帶入斯乃爾定律，令入射角為$\theta_1$，折射角為$\theta_2$
+\begin{align}
+    n_1\sin\left(\theta\right)&= n_2\sin\left(\theta_2\right)\\
+    &= n_2\sin\left(90^\circ-\theta_1\right)
+\end{align}
+整理上式可得知
+\begin{equation}
+    \tan\left(\theta_1\right) = \frac{n_2}{n_1}
+\end{equation}
+
+\subsection*{(二) 證明此角度下的偏振狀態}
+若入射光為線偏振，則可拆解出垂直入射面\((s)\)與平行入涉面$(p)$的兩個波，對$p$方向的偏振波使用菲涅耳方程可知其反射係數$(r_{p})$
+\begin{equation}
+    r_{p}=\frac{n_{2}\cos \theta _{1}-n_{1}\cos \theta _{2}}{n_{2}\cos \theta _{1}+n_{1}\cos \theta _{2}}
+\end{equation}
+帶入布魯斯特角$\theta_2 = 90^\circ-\theta_1$，可得出
+\begin{equation}
+    r_{p} = 0
+\end{equation}
+由此可知平行於入射面的偏振會被完全消除。
+對$s$方向的偏振波使用菲涅耳方程：
+\begin{equation}
+r_{s}=\frac{n_{1}\cos \theta _{1}-n_{2}\cos \theta _{2}}{n_{1}\cos \theta _{1}+n_{2}\cos \theta _{2}} 
+\end{equation}
+\begin{equation}
+    r_s \neq 0
+\end{equation}
+因此垂直於入射面的偏振不會被消除。
+
+\subsection*{九、實驗量測與數據處理}
 \input{pages/theory/method.tex}
 
-\subsection*{九、蒙地卡羅模擬}
+
+\subsection*{十、蒙地卡羅模擬}
 本研究以蒙地卡羅模擬計算理想條件下（不含雜散光與量測雜訊）的角度分布，作為實驗對照。每顆光子自比色槽入口射入，先依
 \[
 s=-\frac{\ln\xi}{\mu_s}
