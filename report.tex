@@ -18,6 +18,8 @@
 \usepackage{zhnumber}
 \usepackage{graphbox}
 \usepackage{array}
+\usepackage[backend=biber, style=ieee]{biblatex} 
+\addbibresource{references.bib}
 
 \setmainjfont[AutoFakeBold=2.5]{PMingLiU}
 
@@ -64,7 +66,7 @@
 \input{pages/conclusion_ai.tex}
 
 \section*{柒、參考文獻資料}
-\input{pages/references_ai.tex}
+\printbibliography[title={references}]
 
 \section*{捌、附錄}
 \input{pages/appendix.tex}
