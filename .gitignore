@@ -1,3 +1,7 @@
 *.out
 *.log
 *.aux
+*.Identifier
+*.gz
+*.fdb_latexmk
+*.fls

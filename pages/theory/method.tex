@@ -8,22 +8,35 @@
 \end{enumerate}
 \begin{figure}[H]
     \centering
-    % 左邊的照片（寬度設為版面的 48%）
-    \begin{subfigure}[b]{0.48\textwidth}
+    % 左邊的照片（寬度設為版面的 32%）
+    \begin{subfigure}[b]{0.32\textwidth}
         \centering
         \includegraphics[width=\textwidth]{image/structure.png}
         \caption{裝置實照}\label{fig:left}
     \end{subfigure}
     \hfill 
-    \begin{subfigure}[b]{0.48\textwidth}
+    \begin{subfigure}[b]{0.32\textwidth}
         \centering
         \includegraphics[width=\textwidth]{image/structure_image.png}
-        \caption{裝置示意圖}\label{fig:right}
+        \caption{裝置示意圖}\label{fig:center}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{image/接線圖.png}
+        \caption{裝置接線圖}\label{fig:right}
     \end{subfigure}\label{fig:both}
 \end{figure}
 
 \subsubsection*{(二) 感測器增益與空白量測}
-感測器增益與積分時間由韌體依讀值切換：預設為 HIGH 增益、積分時間 $600\,\mathrm{ms}$；全光譜通道 CH0 低於 $5000$ 時，切換至 MAX 增益、$200\,\mathrm{ms}$，並維持至 CH0 超過 $50000$ 或飽和後才切回 HIGH，以減少頻繁切換。若 HIGH 飽和，則改以 MED 增益、$100\,\mathrm{ms}$ 補讀一筆，該筆不納入分析。依規格書，HIGH 與 MAX 的典型增益分別約為 LOW 的 $400$ 倍與 $9200$ 倍；同型晶片的 HIGH 增益範圍約為 $360$ 至 $440$ 倍，MAX 約為 $8500$ 至 $9900$ 倍（ams-OSRAM AG, 2023）。量測當天於不同時段各量一次純水空白，並量測雷射關閉時的暗讀值。
+感測器增益與積分時間由韌體依讀值切換：預設為 HIGH 增益、
+積分時間 $600\,\mathrm{ms}$；全光譜通道 CH0 低於 $5000$ 時，
+切換至 MAX 增益、$200\,\mathrm{ms}$，並維持至 CH0 超過 $50000$ 
+或飽和後才切回 HIGH，以減少頻繁切換。若 HIGH 飽和，則改以 MED 
+增益、$100\,\mathrm{ms}$ 補讀一筆，該筆不納入分析。依規格書，
+HIGH 與 MAX 的典型增益分別約為 LOW 的 $400$ 倍與 $9200$ 倍；
+同型晶片的 HIGH 增益範圍約為 $360$ 至 $440$ 倍，MAX 約為 $8500$ 
+至 $9900$ 倍（ams-OSRAM AG, 2023）。量測當天於不同時段各量一次純
+水空白，並量測雷射關閉時的暗讀值。
 
 \subsubsection*{(三) 數據監測方式}
 以 Rust 撰寫監測程式，持續讀取 Arduino 的序列埠資料並存成 CSV，以供後續處理。
