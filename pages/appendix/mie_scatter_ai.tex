@@ -199,6 +199,7 @@ $\psi$ 的亥姆霍茲方程再球座標為：
     c_n &= \frac{i\, m}{\psi_n(mx)\, \xi_n'(x) - m\, \xi_n(x)\, \psi_n'(mx)}, \qquad d_n = \frac{i\, m}{m\, \psi_n(mx)\, \xi_n'(x) - \xi_n(x)\, \psi_n'(mx)}
 \end{align}
 $a_n$、$b_n$ 稱為米散射係數，分別對應電型與磁型的第 $n$ 階多極輻射（$n=1$ 為偶極）。
+其推導源於 Mie 對均勻球在平面波照射下電磁場邊界條件的原始處理，並可見於原始文獻~\cite{https://doi.org/10.1002/andp.19083300302}。
 
 \textbf{截面}\\
 散射截面是球體因散射而帶走的總功率除以入射平面波的時間平均強度。令觀測點的距離 $r$ 遠大於球半徑，並令
@@ -289,8 +290,10 @@ $\pi a^2$。因此式\eqref{eq:sigma_s}可改寫成
     \label{eq:Qsca_proof}
 \end{equation}
 
-由遠場的散射功率與光學定理（消光截面正比於前向散射振幅），對無吸收或有吸收的球，散射與消光效率為
+由遠場的散射功率與光學定理（消光截面正比於前向散射振幅），對無吸收或有吸收的球，消光效率與吸收效率可進一步表示為
 \begin{equation}
-    Q_{sca} = \frac{2}{x^2} \sum_{n=1}^{\infty} (2n+1) \left( |a_n|^2 + |b_n|^2 \right), \qquad Q_{ext} = \frac{2}{x^2} \sum_{n=1}^{\infty} (2n+1)\, \mathrm{Re}\left\{ a_n + b_n \right\}
+    Q_{ext} = \frac{2}{x^2} \sum_{n=1}^{\infty} (2n+1)\, \mathrm{Re}\left\{ a_n + b_n \right\},
+    \qquad
+    Q_{abs} = Q_{ext} - Q_{sca}.
 \end{equation}
-吸收效率 $Q_{abs} = Q_{ext} - Q_{sca}$。級數在 $n$ 略大於 $x$ 之後迅速收斂，數值計算時通常取 $n_{max} \approx x + 4x^{1/3} + 2$。
+級數在 $n$ 略大於 $x$ 之後迅速收斂，數值計算時通常取 $n_{max} \approx x + 4x^{1/3} + 2$。
