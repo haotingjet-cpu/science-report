@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}[repr(align(32))]}\PYG{+w}{ }\PYG{c+c1}{// 加速執行用的記憶體對齊}
+\PYG{k}{pub}\PYG{p}{(}\PYG{k}{crate}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{struct}\PYG{+w}{ }\PYG{n+nc}{Photon}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{pub}\PYG{p}{(}\PYG{k}{crate}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{stokes\PYGZus{}vector}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{StokesVector}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// 光子目前的斯托克向量}
+\PYG{+w}{    }\PYG{k}{pub}\PYG{p}{(}\PYG{k}{crate}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{direction}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{DirecVec}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// 光子目前的方向 (必為單位向量)}
+\PYG{+w}{    }\PYG{k}{pub}\PYG{p}{(}\PYG{k}{crate}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{start\PYGZus{}location}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{DirecVec}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// 移動前位置向量}
+\PYG{+w}{    }\PYG{k}{pub}\PYG{p}{(}\PYG{k}{crate}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{last\PYGZus{}plane\PYGZus{}normal\PYGZus{}v}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{DirecVec}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// 上一個散射平面的法向量}
+\PYG{+w}{    }\PYG{k}{pub}\PYG{p}{(}\PYG{k}{crate}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{:}\PYG{+w}{ }\PYG{k+kt}{f64}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// 粒子權重}
+\PYG{+w}{    }\PYG{k}{pub}\PYG{p}{(}\PYG{k}{crate}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{scattered}\PYG{p}{:}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// 是否經過散射}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -2,7 +2,24 @@
 % chktex-file 17
 % chktex-file 36
 
-\subsection*{1. 平均自由徑}
+\subsection*{1. 單粒子溶液的平均自由徑}
+考慮厚度為 \(dz\)、截面積為 \(A\) 的極薄溶液層，此薄層內的總粒子數為 \(dN = n A \, dz\)，所有粒子提供的總有效散射面積為 \(dA_{\text{sca}} = \sigma_s \, dN = n \sigma_s A \, dz\)，
+光子穿過此薄層時發生散射的機率為\(-\frac{dI}{I}=\frac{dA_{\text{sca}}}{A}=n\sigma _{s}\,dz\)，按照比爾-朗伯定律~\cite{https://doi.org/10.1002/andp.18521620505}可得出未發生散射的彈道光強度隨距離的變化為
+\begin{equation}
+    I(z)=I_{0}e^{-n\sigma _{s}z}
+\end{equation}
+這代表光子前進距離 \(z\) 而未發生散射的存活機率為 
+\begin{equation}
+    P_{\text{survive}}(z) = e^{-n \sigma_s z}
+\end{equation}
+因此自由路徑 $l$ 的期望值為
+\begin{equation}
+    l = \int^{\infty} _0 z\,p(z)\,dz=\frac{1}{n\sigma_s}
+\end{equation}
+其中$\sigma_s$已在式~\ref{eq:Qsca_proof}中得出等於$\pi a^2 Q_{\text{sca}}$，因此可得出
+\begin{equation}
+    l = \frac{1}{n \pi \alpha^2 Q_{\text{sca}}}
+\end{equation}
 \subsection*{2. 自由路徑分布}
 ~\cite{https://doi.org/10.1002/andp.18521620505}的論文說明粒子通過均勻介質時，存活下來的機率成指數的衰減，因此假設粒子前進 $x$ 後存活下的機率符合方程：
 \begin{equation}
@@ -28,8 +45,8 @@
     s &= -\lambda \ln\left(1 - \zeta\right)
 \end{align}
 
-因此若 $R \in (0,1]$ 唯一隨機隨機數，則可透過
+因此若 $R = 1-\zeta , R \in (0,1] $ 唯一隨機隨機數，則可透過
 \begin{equation}
-    s = F^{-1}\left(R\right) = -\lambda \ln \left(R\right)
+    s = F^{-1}\left(R\right) = -\lambda \ln \left(R\right) \label{eq:mean_free_path}
 \end{equation}
 得出粒子的自由路徑分布。

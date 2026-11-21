@@ -201,6 +201,94 @@ $\psi$ 的亥姆霍茲方程再球座標為：
 $a_n$、$b_n$ 稱為米散射係數，分別對應電型與磁型的第 $n$ 階多極輻射（$n=1$ 為偶極）。
 
 \textbf{截面}\\
+散射截面是球體因散射而帶走的總功率除以入射平面波的時間平均強度。令觀測點的距離 $r$ 遠大於球半徑，並令
+\(\rho=kr\)。球漢克爾函數的漸近形式及其 Riccati--Bessel 導數形式為
+\begin{equation}
+    h_n^{(1)}(\rho)\sim (-i)^n\frac{e^{i\rho}}{i\rho},
+    \qquad
+    \left|\frac{\left[\rho h_n^{(1)}(\rho)\right]'}{\rho}\right|
+    \sim \left|h_n^{(1)}(\rho)\right|
+    \sim \frac{1}{kr}.
+    \label{eq:h_asymp}
+\end{equation}
+因此，散射場的遠場只有角向分量，且在球外介質為非磁性介質時，
+\begin{equation}
+    \mathbf{H}_s\sim \frac{1}{\eta}\,\mathbf{e}_r\times\mathbf{e}_{\mathbf{E}_s},
+\end{equation}
+其中 $\eta$ 為介質的波阻抗、$\mathbf{e}_{\mathbf{E}_s}$ 代表
+$\mathbf{E}_s$ 的方向。由此，時間平均散射功率密度的徑向分量為
+\begin{equation}
+    \left\langle S_r\right\rangle
+    =\frac{1}{2}\operatorname{Re}\left(\mathbf{E}_s\times\mathbf{H}_s^*\right)
+    \cdot\mathbf{e}_r
+    =\frac{\left|\mathbf{E}_s\right|^2}{2\eta}.
+    \label{eq:far_poynting}
+\end{equation}
+
+在式\eqref{eq:h_asymp}下，散射場中的
+\(\mathbf{M}^{(3)}_{o1n}\) 與 \(\mathbf{N}^{(3)}_{e1n}\)
+分別與角向函數 $\pi_n$、$\tau_n$ 配對。由上一節的正交關係，
+不同 $n$ 與磁電型項互相正交；而在固定多極階次 $n$ 的內積中，
+\begin{equation}
+    \int_0^{2\pi}\int_0^\pi
+    \left(\pi_n^2+\tau_n^2\right)\sin\theta\,d\theta\,d\phi
+    =
+    \frac{2\pi n^2(n+1)^2}{2n+1}.
+    \label{eq:pie_tau_norm}
+\end{equation}
+同時，
+\begin{equation}
+    E_n=i^nE_0\frac{2n+1}{n(n+1)},
+    \qquad
+    \left|E_n\right|^2
+    =\left|E_0\right|^2
+    \frac{(2n+1)^2}{n^2(n+1)^2}.
+\end{equation}
+將式\eqref{eq:h_asymp}代回散射場並對完整球面積分，所有漸近相位因子的模為 $1$，
+故兩種多極項的係數可分別相加：
+\begin{align}
+    P_{sca}
+    &=r^2\int \left\langle S_r\right\rangle d\Omega
+    =\frac{r^2}{2\eta}
+      \int\left|\mathbf{E}_s\right|^2d\Omega \notag\\
+    &=\frac{\left|E_0\right|^2}{2\eta k^2}
+      \sum_{n=1}^{\infty}
+      \frac{(2n+1)^2}{n^2(n+1)^2}
+      \left[
+      \frac{2\pi n^2(n+1)^2}{2n+1}
+      \left(|a_n|^2+|b_n|^2\right)
+      \right] \notag\\
+    &=\frac{\pi\left|E_0\right|^2}{\eta k^2}
+      \sum_{n=1}^{\infty}(2n+1)
+      \left(|a_n|^2+|b_n|^2\right).
+    \label{eq:Psca}
+\end{align}
+
+入射平面波的時間平均強度為
+\begin{equation}
+    I_i=\frac{\left|E_0\right|^2}{2\eta}.
+\end{equation}
+依散射截面的定義，得
+\begin{equation}
+    \sigma_s=\frac{P_{sca}}{I_i}
+    =\frac{2\pi}{k^2}
+    \sum_{n=1}^{\infty}(2n+1)
+    \left(|a_n|^2+|b_n|^2\right).
+    \label{eq:sigma_s}
+\end{equation}
+令球半徑為 $a$，尺寸參數 $x=ka$，則 $k^2=x^2/a^2$，而球的幾何截面為
+$\pi a^2$。因此式\eqref{eq:sigma_s}可改寫成
+\begin{equation}
+    \sigma_s
+    =\pi a^2\cdot
+    \underbrace{
+    \frac{2}{x^2}
+    \sum_{n=1}^{\infty}(2n+1)
+    \left(|a_n|^2+|b_n|^2\right)
+    }_{Q_{\text{sca}}\text{（散射效率因子）}}.
+    \label{eq:Qsca_proof}
+\end{equation}
+
 由遠場的散射功率與光學定理（消光截面正比於前向散射振幅），對無吸收或有吸收的球，散射與消光效率為
 \begin{equation}
     Q_{sca} = \frac{2}{x^2} \sum_{n=1}^{\infty} (2n+1) \left( |a_n|^2 + |b_n|^2 \right), \qquad Q_{ext} = \frac{2}{x^2} \sum_{n=1}^{\infty} (2n+1)\, \mathrm{Re}\left\{ a_n + b_n \right\}

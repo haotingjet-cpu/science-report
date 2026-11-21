@@ -48,8 +48,25 @@ $g$ 越接近 $1$，散射光越集中於前向。
 \end{align}
 穆勒矩陣為瓊斯矩陣經過克羅內克積後的結果
 \begin{align}
-    \mathbf{M} = \mathbf{A} \left(\mathbf{J}\otimes\mathbf{J}^*\right) \mathbf{A}^{-1}
+    \mathbf{M} &= \mathbf{A} \left(\mathbf{J}\otimes\mathbf{J}^*\right) \mathbf{A}^{-1}\\
+               &=\begin{bmatrix} S_{11}(\theta) & S_{12}(\theta) & 0 & 0 \\ S_{12}(\theta) & S_{11}(\theta) & 0 & 0 \\ 0 & 0 & S_{33}(\theta) & S_{34}(\theta) \\ 0 & 0 & -S_{34}(\theta) & S_{33}(\theta) \end{bmatrix}
 \end{align}
+其中$S_{11}=\frac{1}{2}(|S_1|^2+|S_2|^2),\ S_{12}=\frac{1}{2}(|S_2|^2-|S_1|^2),\ S_{33}=\frac{1}{2}(S_1S_2^* + S_1^2S_2),\ S_{34}=\frac{1}{2}(S_1S_2^* - S_1^2S_2)$
+
+\subsubsection*{光子散射後的斯托克向量}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{image/模擬示意圖.png}
+    \caption{碰撞示意圖}
+\end{figure}
+如圖所示，$E_1$是$S_1$存在的平面而$E_2$是$S_1,\ S_2$的散射面，因穆勒矩陣定義在散射面上，所以必然有旋轉矩陣$R(\psi)$的存在，因此光子帶斯托克向量經過粒子散射後的結果為：
+\begin{equation}
+    S_2(\theta)=M(\theta)R(\psi)S_1 \label{eq:monte_}
+\end{equation}
+其中，$R(\psi)$為旋轉矩陣
+\begin{equation}
+    R(\psi)=\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & \cos(2\psi) & \sin(2\psi) & 0 \\ 0 & -\sin(2\psi)  & \cos(2\psi) & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
+\end{equation}
 
 \subsection*{四、光學厚度}
 光學厚度 $\tau$ 表示光穿過樣品時平均被散射的次數：
@@ -66,11 +83,9 @@ $L=1\,\mathrm{cm}$ 為比色槽光徑。$\tau\ll1$ 時大多數光子最多只�
 
 \subsection*{五、粒子自由路徑}
 \input{pages/theory/free_path.tex}
-假設粒子平均自由路徑為 $\lambda$
- 
 
 \subsection*{六、獨立散射條件}
-本研究最濃樣品的粒子平均間距約為粒徑的 $11$ 倍；粒子表面間隙與水中波長之比，對 $0.492\,\mu\mathrm{m}$ 與 $2.16\,\mu\mathrm{m}$ 微球分別約為 $10$ 與 $46$，高於相依散射開始出現的約 $0.3$ 至 $0.5$ 門檻（Baillis \& Sacadura, 2000）。樣品體積分率僅 $0.039\%$，因此將粒子視為獨立散射體；光子可以經歷多次散射，但每次散射仍以單一粒子的 Mie 理論描述。
+本研究最濃樣品的粒子平均間距約為粒徑的 $11$ 倍；粒子表面間隙與水中波長之比，對 $0.492\,\mu\mathrm{m}$ 與 $2.16\,\mu\mathrm{m}$ 微球分別約為 $10$ 與 $46$，高於相依散射開始出現的約 $0.3$ 至 $0.5$ 門檻~\cite{baillis2000ThermalRadiation}。樣品體積分率僅 $0.039\%$，因此將粒子視為獨立散射體；光子可以經歷多次散射，但每次散射仍以單一粒子的 Mie 理論描述。
 
 \subsection*{七、主指標 $C$ 與角度選擇}
 本研究以旋轉臂角度作為量測角度。光由比色槽壁射出時會折射，因此臂角與水中的散射角不同；蒙地卡羅模擬納入此折射，實驗與模擬皆以臂角比較。比較不同前向與後向角度組合後，依據數據穩定性、粒徑區別度、對 $\tau$ 的敏感度及與模擬的接近程度，選用

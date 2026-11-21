@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{pub}\PYG{p}{(}\PYG{k}{crate}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{n}{PHOTON}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{photon}\PYG{p}{::}\PYG{n}{Photon}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{photon}\PYG{p}{::}\PYG{n}{Photon}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{stokes\PYGZus{}vector}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{Vec4}\PYG{p}{::}\PYG{n}{new}\PYG{p}{(}\PYG{l+m+mf}{1.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{p}{),}\PYG{+w}{ }\PYG{c+c1}{// 光強為 1，偏振視雷射測量而定}
+\PYG{+w}{    }\PYG{n}{direction}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{Vec3}\PYG{p}{::}\PYG{n}{new}\PYG{p}{(}\PYG{l+m+mf}{1.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{p}{),}\PYG{+w}{ }\PYG{c+c1}{// 朝 x+ 方向射入方形比色管}
+\PYG{+w}{    }\PYG{n}{start\PYGZus{}location}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{Vec3}\PYG{p}{::}\PYG{n}{new}\PYG{p}{(}\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{p}{),}\PYG{+w}{ }\PYG{c+c1}{// 從原點射向比色管}
+\PYG{+w}{    }\PYG{n}{last\PYGZus{}plane\PYGZus{}normal\PYGZus{}v}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{Vec3}\PYG{p}{::}\PYG{n}{new}\PYG{p}{(}\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{1.0}\PYG{p}{),}\PYG{+w}{ }\PYG{c+c1}{// 處使值不會用到，預設水平平面}
+\PYG{+w}{    }\PYG{n}{w}\PYG{p}{:}\PYG{+w}{ }\PYG{l+m+mf}{1.0}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// 權重為一}
+\PYG{+w}{    }\PYG{n}{scattered}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{false}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// 尚未散射}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}
