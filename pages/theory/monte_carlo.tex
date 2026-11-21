@@ -65,3 +65,6 @@ pub(crate) const PHOTON: photon::Photon = photon::Photon {
     \item[(4)] 藉隨機出的角度找出新的方向向量
     \item[(5)] 使用式~\eqref{eq:monte_} 找出新的斯托克向量
 \end{itemize}
+
+\subsection*{5. 權重剪枝檢查}
+根據自己所定義的最低權重(我們使用 $\frac{1}{10}$)，若該光子權重已小於則做出類似俄羅斯輪盤的隨機死亡，若存活則重新步驟 2
