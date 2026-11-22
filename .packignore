@@ -1,0 +1,16 @@
+*.out
+*.log
+*.aux
+*.Identifier
+*.gz
+*.fdb_latexmk
+*.fls
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.toc
+*.lof
+*.lot
+Assets
+_minted-report
