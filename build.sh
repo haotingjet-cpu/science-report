@@ -1,9 +1,6 @@
 set -e
 
-rm -f report.out report.aux *.gz *.log
+latexmk -c
+latexmk -lualatex -shell-escape -interaction=nonstopmode report.tex
 
-lualatex report.tex
-lualatex report.tex
-
-rm -f report.out report.aux *.gz *.log
-
+latexmk -c
