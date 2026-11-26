@@ -41,17 +41,17 @@
 $g$ 越接近 $1$，散射光越集中於前向。
 
 \subsection*{三、穆勒矩陣與斯托克斯向量}
-穆勒矩陣與斯托克向量為描述帶偏振的米氏散射方法。
+穆勒矩陣與斯托克向量為描述帶偏振的米氏散射方法\parencite{stokes1852Composition,bohren1983Absorption}。
 斯托克向量由四項所構成，分別是總光強度$(I)$、水平與垂直線偏振差$(Q)$、正負$45$度線偏振差$(U)$、右旋與左旋圓偏振差$(V)$。
 \begin{align}
     \mathbf{S} = {\left[I, Q, U, V\right]}^T
 \end{align}
-穆勒矩陣為瓊斯矩陣經過克羅內克積後的結果
+穆勒矩陣為瓊斯矩陣\parencite{jones1941NewCalculus}經過克羅內克積後的結果\parencite{azzam1977Ellipsometry}
 \begin{align}
     \mathbf{M} &= \mathbf{A} \left(\mathbf{J}\otimes\mathbf{J}^*\right) \mathbf{A}^{-1}\\
-               &=\begin{bmatrix} S_{11}(\theta) & S_{12}(\theta) & 0 & 0 \\ S_{12}(\theta) & S_{11}(\theta) & 0 & 0 \\ 0 & 0 & S_{33}(\theta) & S_{34}(\theta) \\ 0 & 0 & -S_{34}(\theta) & S_{33}(\theta) \end{bmatrix}
+               &=\begin{bmatrix} F_{11}(\theta) & F_{12}(\theta) & 0 & 0 \\ F_{12}(\theta) & F_{11}(\theta) & 0 & 0 \\ 0 & 0 & F_{33}(\theta) & F_{34}(\theta) \\ 0 & 0 & -F_{34}(\theta) & F_{33}(\theta) \end{bmatrix}
 \end{align}
-其中$S_{11}=\frac{1}{2}(|S_1|^2+|S_2|^2),\ S_{12}=\frac{1}{2}(|S_2|^2-|S_1|^2),\ S_{33}=\frac{1}{2}(S_1S_2^* + S_1^2S_2),\ S_{34}=\frac{1}{2}(S_1S_2^* - S_1^2S_2)$
+其中$F_{11}=\frac{1}{2}(|S_1|^2+|S_2|^2),\ F_{12}=\frac{1}{2}(|S_2|^2-|S_1|^2),\ F_{33}=\frac{1}{2}(S_1S_2^* + S_1^*S_2),\ F_{34}=\frac{i}{2}(S_1S_2^* - S_1^*S_2)$
 
 \subsubsection*{光子散射後的斯托克向量}
 \begin{figure}[H]
@@ -59,7 +59,7 @@ $g$ 越接近 $1$，散射光越集中於前向。
     \includegraphics[width=0.6\textwidth]{image/模擬示意圖.png}
     \caption{碰撞示意圖}
 \end{figure}
-如圖所示，$E_1$是$S_1$存在的平面而$E_2$是$S_1,\ S_2$的散射面，因穆勒矩陣定義在散射面上，所以必然有旋轉矩陣$R(\psi)$的存在，因此光子帶斯托克向量經過粒子散射後的結果為：
+如圖所示，$E_1$是$S_1$存在的平面而$E_2$是$S_1,\ S_2$的散射面，因穆勒矩陣定義在散射面上，所以必然有旋轉矩陣$R(\psi)$的存在，因此光子帶斯托克向量經過粒子散射後的結果為\parencite{ramellaRoman2005ThreeMC}：
 \begin{equation}
     S_2(\theta)=M(\theta)R(\psi)S_1 \label{eq:monte_}
 \end{equation}
@@ -85,7 +85,7 @@ $L=1\,\mathrm{cm}$ 為比色槽光徑。$\tau\ll1$ 時大多數光子最多只�
 \input{pages/theory/free_path.tex}
 
 \subsection*{六、獨立散射條件}
-本研究最濃樣品的粒子平均間距約為粒徑的 $11$ 倍；粒子表面間隙與水中波長之比，對 $0.492\,\mu\mathrm{m}$ 與 $2.16\,\mu\mathrm{m}$ 微球分別約為 $10$ 與 $46$，高於相依散射開始出現的約 $0.3$ 至 $0.5$ 門檻~\cite{baillis2000ThermalRadiation}。樣品體積分率僅 $0.039\%$，因此將粒子視為獨立散射體；光子可以經歷多次散射，但每次散射仍以單一粒子的 Mie 理論描述。
+本研究最濃樣品的粒子平均間距約為粒徑的 $11$ 倍；粒子表面間隙與水中波長之比，對 $0.492\,\mu\mathrm{m}$ 與 $2.16\,\mu\mathrm{m}$ 微球分別約為 $10$ 與 $46$，高於相依散射開始出現的約 $0.3$ 至 $0.5$ 門檻\parencite{baillis2000ThermalRadiation}。樣品體積分率僅 $0.039\%$，因此將粒子視為獨立散射體；光子可以經歷多次散射，但每次散射仍以單一粒子的 Mie 理論描述。
 
 \subsection*{七、主指標 $C$ 與角度選擇}
 本研究以旋轉臂角度作為量測角度。光由比色槽壁射出時會折射，因此臂角與水中的散射角不同；蒙地卡羅模擬納入此折射，實驗與模擬皆以臂角比較。比較不同前向與後向角度組合後，依據數據穩定性、粒徑區別度、對 $\tau$ 的敏感度及與模擬的接近程度，選用
@@ -130,7 +130,7 @@ N_0=\frac{c}{\rho\,(\pi d^3/6)}
 \subsection*{(一) 布魯斯特角角度大小}
 理論指出，在布魯斯特角下，反射光與折射光垂直。帶入斯乃爾定律，令入射角為$\theta_1$，折射角為$\theta_2$
 \begin{align}
-    n_1\sin\left(\theta\right)&= n_2\sin\left(\theta_2\right)\\
+    n_1\sin\left(\theta_1\right)&= n_2\sin\left(\theta_2\right)\\
     &= n_2\sin\left(90^\circ-\theta_1\right)
 \end{align}
 整理上式可得知
@@ -139,7 +139,7 @@ N_0=\frac{c}{\rho\,(\pi d^3/6)}
 \end{equation}
 
 \subsection*{(二) 證明此角度下的偏振狀態}
-若入射光為線偏振，則可拆解出垂直入射面\((s)\)與平行入涉面$(p)$的兩個波，對$p$方向的偏振波使用菲涅耳方程可知其反射係數$(r_{p})$
+若入射光為線偏振，則可拆解出垂直入射面\((s)\)與平行入射面$(p)$的兩個波，對$p$方向的偏振波使用菲涅耳方程\parencite{born1999Principles,hecht2017Optics}可知其反射係數$(r_{p})$
 \begin{equation}
     r_{p}=\frac{n_{2}\cos \theta _{1}-n_{1}\cos \theta _{2}}{n_{2}\cos \theta _{1}+n_{1}\cos \theta _{2}}
 \end{equation}

@@ -1,211 +1,48 @@
-% 米氏散射：瓊斯矩陣、斯托克斯向量與穆勒矩陣
-% 承接 mie_scatter.tex，沿用其記號：e^{-i\omega t}、x = ka、m = k_1/k、
-% \psi_n,\xi_n 為 Riccati--Bessel 函數，a_n, b_n 為米散射係數，
-% \pi_n = P_n^1/\sin\theta、\tau_n = dP_n^1/d\theta（P_n^1 不含 Condon--Shortley 相位，即 P_1^1 = \sin\theta）。
-% 需要 amsmath, amssymb 與中文支援。
+% 米氏散射：瓊斯矩陣、斯托克斯向量與穆勒矩陣（骨架；完整推導見 Bohren & Huffman (1983) 第二至四章）
 
 \subsubsection*{(六) 遠場與振幅散射矩陣（瓊斯矩陣）}
-\textbf{1. 散射場的遠場形式}\\
-由 (四) 節，散射場為
-\begin{equation}
-    \mathbf{E}_s = \sum_{n=1}^{\infty} E_n \left( i a_n \mathbf{N}^{(3)}_{e1n} - b_n \mathbf{M}^{(3)}_{o1n} \right), \qquad E_n = i^n E_0 \frac{2n+1}{n(n+1)}
-\end{equation}
-當 $kr \gg n^2$（對有效的項 $n \lesssim x$，即 $kr \gg x^2$）時，利用
-\begin{equation}
-    h_n^{(1)}(\rho) \approx \frac{(-i)^n e^{i\rho}}{i\rho}, \qquad \frac{\left[\rho\, h_n^{(1)}(\rho)\right]'}{\rho} \approx \frac{(-i)^n e^{i\rho}}{\rho}
-\end{equation}
-（第二式由 $\rho\, h_n^{(1)} \approx (-i)^{n+1} e^{i\rho}$ 對 $\rho$ 微分得到）。$\mathbf{N}^{(3)}$ 的徑向分量正比於 $z_n/\rho \sim 1/\rho^2$，比橫向分量低一階，可略去。因此 $\mathbf{M}^{(3)}$、$\mathbf{N}^{(3)}$ 在遠場皆為橫向，且滿足
-\begin{equation}
-    \mathbf{N}^{(3)}_{\sigma 1n} \approx i\, \mathbf{e}_r \times \mathbf{M}^{(3)}_{\sigma 1n}, \qquad \mathbf{M}^{(3)}_{\sigma 1n} \approx i\, \mathbf{e}_r \times \mathbf{N}^{(3)}_{\sigma 1n} \label{eq:far_rel}
-\end{equation}
-（可由 (三) 節的分量式直接驗證，例如 $\mathbf{e}_r \times \mathbf{e}_{\theta} = \mathbf{e}_{\phi}$、$\mathbf{e}_r \times \mathbf{e}_{\phi} = -\mathbf{e}_{\theta}$）。把此式代入 $\mathbf{H}_s$ 並與 $\mathbf{E}_s$ 比較：
-\begin{equation}
-    \mathbf{e}_r \times \mathbf{E}_s \approx \sum_n E_n \left( a_n \mathbf{M}^{(3)}_{e1n} + i b_n \mathbf{N}^{(3)}_{o1n} \right) = \frac{\omega\mu}{k} \mathbf{H}_s \quad \Rightarrow \quad \mathbf{H}_s \approx \sqrt{\frac{\epsilon}{\mu}}\, \mathbf{e}_r \times \mathbf{E}_s
-\end{equation}
-所以遠場是局部平面波，偏振狀態完全由 $\mathbf{E}_s$ 的 $\theta$、$\phi$ 分量決定。
+本節只列出結果，推導見 \textcite{bohren1983Absorption} 第三、四章；瓊斯矩陣的寫法源自 \textcite{jones1941NewCalculus}。
 
-\medskip
-取 $\mathbf{E}_s$ 的 $\theta$ 分量，由 (三) 節的 $\mathbf{M}_{o1n}$、$\mathbf{N}_{e1n}$：
+在遠場（$kr \gg x^2$），散射場為橫向的局部平面波。以包含入射方向與散射方向的平面為散射面，將電場分解為平行（$\parallel$）與垂直（$\perp$）於散射面的分量，散射場與入射場的關係為
 \begin{equation}
-    E_{s\theta} = \cos\phi \sum_n E_n \left[ i a_n \tau_n \frac{\left[\rho h_n^{(1)}\right]'}{\rho} - b_n \pi_n h_n^{(1)} \right] \approx \cos\phi \sum_n E_n (-i)^n \frac{e^{ikr}}{kr}\; i \left( a_n \tau_n + b_n \pi_n \right)
+    \begin{pmatrix} E_{s\parallel} \\ E_{s\perp} \end{pmatrix} = \frac{e^{ikr}}{-ikr} \begin{pmatrix} S_2(\theta) & 0 \\ 0 & S_1(\theta) \end{pmatrix} \begin{pmatrix} E_{\parallel i} \\ E_{\perp i} \end{pmatrix} , \label{eq:jones}
 \end{equation}
-同理 $\phi$ 分量為
+其中振幅散射函數為
 \begin{equation}
-    E_{s\phi} = -\sin\phi \sum_n E_n \left[ i a_n \pi_n \frac{\left[\rho h_n^{(1)}\right]'}{\rho} - b_n \tau_n h_n^{(1)} \right] \approx -\sin\phi \sum_n E_n (-i)^n \frac{e^{ikr}}{kr}\; i \left( a_n \pi_n + b_n \tau_n \right)
+    S_1(\theta) = \sum_{n=1}^{\infty} \frac{2n+1}{n(n+1)} \left( a_n \pi_n + b_n \tau_n \right), \qquad S_2(\theta) = \sum_{n=1}^{\infty} \frac{2n+1}{n(n+1)} \left( a_n \tau_n + b_n \pi_n \right) . \label{eq:S1S2}
 \end{equation}
-注意 $E_n (-i)^n = E_0 \dfrac{2n+1}{n(n+1)}$，且 $\dfrac{i}{kr} = \dfrac{1}{-ikr}$。定義振幅散射函數
-\begin{equation}
-    S_1(\theta) = \sum_{n=1}^{\infty} \frac{2n+1}{n(n+1)} \left( a_n \pi_n + b_n \tau_n \right), \qquad S_2(\theta) = \sum_{n=1}^{\infty} \frac{2n+1}{n(n+1)} \left( a_n \tau_n + b_n \pi_n \right) \label{eq:S1S2}
-\end{equation}
-則
-\begin{equation}
-    E_{s\theta} \approx E_0 \frac{e^{ikr}}{-ikr} \cos\phi\; S_2(\theta), \qquad E_{s\phi} \approx -E_0 \frac{e^{ikr}}{-ikr} \sin\phi\; S_1(\theta) \label{eq:Es_far}
-\end{equation}
-
-\textbf{2. 散射面與入射場分解}\\
-散射面定義為包含入射方向 $\mathbf{e}_z$ 與散射方向 $\mathbf{e}_r$ 的平面，其方位角為 $\phi$。在入射端取散射面內與垂直於散射面的單位向量
-\begin{equation}
-    \mathbf{e}_{\parallel i} = \cos\phi\, \mathbf{e}_x + \sin\phi\, \mathbf{e}_y, \qquad \mathbf{e}_{\perp i} = \sin\phi\, \mathbf{e}_x - \cos\phi\, \mathbf{e}_y
-\end{equation}
-滿足 $\mathbf{e}_{\perp i} \times \mathbf{e}_{\parallel i} = \mathbf{e}_z$（右手系）。在散射端相應取
-\begin{equation}
-    \mathbf{e}_{\parallel s} = \mathbf{e}_{\theta}, \qquad \mathbf{e}_{\perp s} = -\mathbf{e}_{\phi}, \qquad \mathbf{e}_{\perp s} \times \mathbf{e}_{\parallel s} = \mathbf{e}_r
-\end{equation}
-$x$ 方向偏振的入射場可分解為
-\begin{equation}
-    E_0 \mathbf{e}_x = E_{\parallel i}\, \mathbf{e}_{\parallel i} + E_{\perp i}\, \mathbf{e}_{\perp i}, \qquad E_{\parallel i} = E_0 \cos\phi, \quad E_{\perp i} = E_0 \sin\phi
-\end{equation}
-（可直接驗證 $\cos\phi\, \mathbf{e}_{\parallel i} + \sin\phi\, \mathbf{e}_{\perp i} = \mathbf{e}_x$）。散射場分量為 $E_{s\parallel} = E_{s\theta}$、$E_{s\perp} = -E_{s\phi}$，式\eqref{eq:Es_far}變為
-\begin{equation}
-    E_{s\parallel} = \frac{e^{ikr}}{-ikr}\, S_2(\theta)\, E_{\parallel i}, \qquad E_{s\perp} = \frac{e^{ikr}}{-ikr}\, S_1(\theta)\, E_{\perp i} \label{eq:Es_pp}
-\end{equation}
-
-\textbf{3. 球的振幅散射矩陣為對角（瓊斯矩陣）}\\
-一般情形下，散射場分量是入射場分量的線性組合（Maxwell 方程式與邊界條件皆為線性）：
-\begin{equation}
-    \begin{pmatrix} E_{s\parallel} \\ E_{s\perp} \end{pmatrix} = \frac{e^{ikr}}{-ikr} \begin{pmatrix} S_2 & S_3 \\ S_4 & S_1 \end{pmatrix} \begin{pmatrix} E_{\parallel i} \\ E_{\perp i} \end{pmatrix} \label{eq:jones_general}
-\end{equation}
-其中 $S_j$ 只與散射方向及入射方向有關。球對於通過球心的任何軸旋轉對稱，繞 $z$ 軸旋轉可把任一散射面轉到另一個散射面，而分量 $\parallel$、$\perp$ 是相對於散射面定義的，故 $S_j$ 只依賴於 $\theta$，與 $\phi$ 無關。把式\eqref{eq:jones_general}與式\eqref{eq:Es_pp}對 $x$ 偏振入射比較，對所有 $\phi$ 成立：
-\begin{align}
-    E_0 \cos\phi\, S_2 &= E_0 \left( S_2 \cos\phi + S_3 \sin\phi \right) \\
-    E_0 \sin\phi\, S_1 &= E_0 \left( S_4 \cos\phi + S_1 \sin\phi \right)
-\end{align}
-取 $\phi = 0$ 與 $\phi = \pi/2$ 即得
-\begin{equation}
-    S_3(\theta) = S_4(\theta) = 0
-\end{equation}
-因此球的瓊斯矩陣（基底為 $(\mathbf{e}_{\parallel}, \mathbf{e}_{\perp})$）為
-\begin{equation}
-    \mathbf{J} = \frac{e^{ikr}}{-ikr} \begin{pmatrix} S_2(\theta) & 0 \\ 0 & S_1(\theta) \end{pmatrix}, \qquad \mathbf{E}_s = \mathbf{J}\, \mathbf{E}_i \label{eq:jones}
-\end{equation}
-不論入射光的偏振態為何（線性疊加），$\parallel$ 與 $\perp$ 分量彼此獨立地乘上 $S_2$、$S_1$。$S_1 \neq S_2$ 一般成立，所以散射會改變偏振態。
-
-\textbf{4. 前向散射與截面（驗證 (五) 節的公式）}\\
-\textit{(a) 前向。} $\theta \to 0$ 時 $P_n^1 = \sin\theta \cdot dP_n/d\left(\cos\theta\right)$，而 $dP_n/d\left(\cos\theta\right)\big|_{\cos\theta=1} = n(n+1)/2$，故 $\pi_n(0) = \tau_n(0) = n(n+1)/2$，
-\begin{equation}
-    S_1(0) = S_2(0) = \frac{1}{2} \sum_{n=1}^{\infty} (2n+1)\left( a_n + b_n \right) \equiv S(0)
-\end{equation}
-\textit{(b) 散射截面。} 遠場的時間平均 Poynting 向量為 $\boldsymbol{\Pi}_s = \frac{1}{2} \mathrm{Re}\left( \mathbf{E}_s \times \mathbf{H}_s^* \right) = \frac{1}{2}\sqrt{\epsilon/\mu}\, |\mathbf{E}_s|^2\, \mathbf{e}_r$，入射輻照度 $I_i = \frac{1}{2}\sqrt{\epsilon/\mu}\, |E_0|^2$。由式\eqref{eq:Es_far}，
-\begin{equation}
-    C_{sca} = \frac{1}{I_i} \int \boldsymbol{\Pi}_s \cdot \mathbf{e}_r\, r^2 d\Omega = \frac{1}{k^2} \int_0^{2\pi}\!\!\int_0^{\pi} \left( |S_2|^2 \cos^2\phi + |S_1|^2 \sin^2\phi \right) \sin\theta\, d\theta\, d\phi = \frac{\pi}{k^2} \int_0^{\pi} \left( |S_1|^2 + |S_2|^2 \right) \sin\theta\, d\theta
-\end{equation}
-把式\eqref{eq:S1S2}代入，令 $c_n = (2n+1)/\left[n(n+1)\right]$：
-\begin{equation}
-    |S_1|^2 + |S_2|^2 = \sum_{n,n'} c_n c_{n'} \left[ \left( a_n a_{n'}^* + b_n b_{n'}^* \right)\left( \pi_n \pi_{n'} + \tau_n \tau_{n'} \right) + \left( a_n b_{n'}^* + b_n a_{n'}^* \right)\left( \pi_n \tau_{n'} + \tau_n \pi_{n'} \right) \right]
-\end{equation}
-由 (三) 節第 4 點的正交關係（$\ell = 1$）：
-\begin{equation}
-    \int_0^{\pi} \left( \pi_n \pi_{n'} + \tau_n \tau_{n'} \right) \sin\theta\, d\theta = \frac{2n^2(n+1)^2}{2n+1}\, \delta_{nn'}, \qquad \int_0^{\pi} \left( \pi_n \tau_{n'} + \tau_n \pi_{n'} \right) \sin\theta\, d\theta = 0
-\end{equation}
-（第二式為 $\left[ P_n^1 P_{n'}^1 \right]_0^{\pi} = 0$。）因此
-\begin{equation}
-    \int_0^{\pi} \left( |S_1|^2 + |S_2|^2 \right) \sin\theta\, d\theta = 2 \sum_{n=1}^{\infty} (2n+1) \left( |a_n|^2 + |b_n|^2 \right) \;\Rightarrow\; Q_{sca} = \frac{C_{sca}}{\pi a^2} = \frac{2}{x^2} \sum_{n=1}^{\infty} (2n+1) \left( |a_n|^2 + |b_n|^2 \right)
-\end{equation}
-與 (五) 節所列的結果一致。
-
-\textit{(c) 消光截面。} 光學定理（消光截面正比於前向散射振幅的實部）為 $C_{ext} = \dfrac{4\pi}{k^2} \mathrm{Re}\left\{ S(0) \right\}$，代入 (a) 得
-\begin{equation}
-    Q_{ext} = \frac{4}{x^2} \mathrm{Re}\left\{ S(0) \right\} = \frac{2}{x^2} \sum_{n=1}^{\infty} (2n+1)\, \mathrm{Re}\left\{ a_n + b_n \right\}
-\end{equation}
-同樣與 (五) 節一致。本節未重新推導光學定理，這裡視為已知結果。
-
-\textbf{5. 數值計算上的遞迴}\\
-$\pi_n$、$\tau_n$ 可用下列遞迴計算（$\mu = \cos\theta$，$\pi_0 = 0$，$\pi_1 = 1$）：
-\begin{equation}
-    \pi_n = \frac{2n-1}{n-1}\, \mu\, \pi_{n-1} - \frac{n}{n-1}\, \pi_{n-2}, \qquad \tau_n = n \mu\, \pi_n - (n+1)\, \pi_{n-1}
-\end{equation}
-前幾項為 $\pi_1 = 1$、$\tau_1 = \cos\theta$、$\pi_2 = 3\cos\theta$、$\tau_2 = 3\cos 2\theta$。
+球對任何通過球心的軸旋轉對稱，因此矩陣的非對角元為零，且 $S_1$、$S_2$ 只與散射角 $\theta$ 有關。$\parallel$ 與 $\perp$ 分量各自乘上 $S_2$、$S_1$；一般 $S_1 \neq S_2$，所以散射會改變偏振態。
 
 \subsubsection*{(七) 斯托克斯向量}
-\textbf{1. 定義}\\
-對沿 $\mathbf{e}_k$ 傳播的平面波，在右手系 $(\mathbf{e}_{\perp}, \mathbf{e}_{\parallel}, \mathbf{e}_k)$ 中分量為 $E_{\parallel}, E_{\perp}$，斯托克斯參數定義為
+斯托克斯參數由 \textcite{stokes1852Composition} 提出，本節的定義與參考面旋轉依 \textcite{bohren1983Absorption} 第二章。斯托克斯參數定義為
 \begin{equation}
     \begin{aligned}
         I &= \langle E_{\parallel} E_{\parallel}^* + E_{\perp} E_{\perp}^* \rangle, \qquad & Q &= \langle E_{\parallel} E_{\parallel}^* - E_{\perp} E_{\perp}^* \rangle \\
         U &= \langle E_{\parallel} E_{\perp}^* + E_{\perp} E_{\parallel}^* \rangle, \qquad & V &= i \langle E_{\parallel} E_{\perp}^* - E_{\perp} E_{\parallel}^* \rangle
     \end{aligned} \label{eq:stokes_def}
 \end{equation}
-$\langle\cdot\rangle$ 為時間平均（準單色光），斯托克斯向量為 $\mathbf{S} = (I, Q, U, V)^{T}$。$I$ 正比於輻照度，比例常數為 $\frac{1}{2}\sqrt{\epsilon/\mu}$。$V$ 的正負號（對應左旋或右旋）與定義、時間因子的選擇有關，換用其他文獻的慣例時需對照。
-
-單一頻率的完全偏振光有 $I^2 = Q^2 + U^2 + V^2$，一般光則 $I^2 \geq Q^2 + U^2 + V^2$，偏振度為 $\sqrt{Q^2+U^2+V^2}/I$。
-
-\textbf{2. 與瓊斯向量的關係}\\
-令 $w = \langle E_{\parallel} E_{\perp}^* \rangle$，則 $U = 2\,\mathrm{Re}\, w$，$V = -2\,\mathrm{Im}\, w$，即
+其中 $\langle\cdot\rangle$ 為時間平均，斯托克斯向量為 $\mathbf{S} = (I, Q, U, V)^{T}$；完全偏振光滿足 $I^2 = Q^2 + U^2 + V^2$。若把參考軸繞傳播方向轉動角度 $\alpha$，$I$、$V$ 不變，$Q$、$U$ 依下式轉換：
 \begin{equation}
-    \langle E_{\parallel} E_{\parallel}^* \rangle = \frac{I+Q}{2}, \qquad \langle E_{\perp} E_{\perp}^* \rangle = \frac{I-Q}{2}, \qquad w = \frac{U - iV}{2} \label{eq:stokes_inv}
+    \mathbf{S}' = \mathbf{R}(\alpha)\, \mathbf{S}, \qquad \mathbf{R}(\alpha) = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & \cos 2\alpha & \sin 2\alpha & 0 \\ 0 & -\sin 2\alpha & \cos 2\alpha & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} . \label{eq:rot}
 \end{equation}
-
-\textbf{3. 參考面的旋轉}\\
-若把參考軸繞 $\mathbf{e}_k$ 轉動，$\mathbf{e}_{\parallel}' = \cos\alpha\, \mathbf{e}_{\parallel} + \sin\alpha\, \mathbf{e}_{\perp}$，$\mathbf{e}_{\perp}' = -\sin\alpha\, \mathbf{e}_{\parallel} + \cos\alpha\, \mathbf{e}_{\perp}$，則分量為 $E_{\parallel}' = \cos\alpha\, E_{\parallel} + \sin\alpha\, E_{\perp}$，$E_{\perp}' = -\sin\alpha\, E_{\parallel} + \cos\alpha\, E_{\perp}$。代入式\eqref{eq:stokes_def}：
-\begin{equation}
-    Q' = \left(\cos^2\alpha - \sin^2\alpha\right) Q + 2\sin\alpha\cos\alpha\, U, \qquad U' = -2\sin\alpha\cos\alpha\, Q + \left(\cos^2\alpha - \sin^2\alpha\right) U
-\end{equation}
-$I$、$V$ 不變，所以
-\begin{equation}
-    \mathbf{S}' = \mathbf{R}(\alpha)\, \mathbf{S}, \qquad \mathbf{R}(\alpha) = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & \cos 2\alpha & \sin 2\alpha & 0 \\ 0 & -\sin 2\alpha & \cos 2\alpha & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \label{eq:rot}
-\end{equation}
-$\mathbf{R}(\alpha)$ 用來把以實驗室座標（或前一次散射的參考面）表示的斯托克斯向量，換成相對於當次散射面的表示。例如 $x$ 偏振入射時，在散射面座標下 $E_{\parallel i} = E_0\cos\phi$、$E_{\perp i} = E_0\sin\phi$，由式\eqref{eq:stokes_def}得 $\mathbf{S}_i = E_0^2 \left(1,\ \cos 2\phi,\ \sin 2\phi,\ 0\right)^{T}$。旋轉角的正負號取決於實驗室參考軸如何選取，須保持 $(\mathbf{e}_{\perp}, \mathbf{e}_{\parallel}, \mathbf{e}_k)$ 為右手系。
 
 \subsubsection*{(八) 穆勒矩陣}
-\textbf{1. 由瓊斯矩陣推導}\\
-在散射面座標下，由式\eqref{eq:Es_pp}，令 $f = e^{ikr}/(-ikr)$，$|f|^2 = 1/(k^2r^2)$，且 $f$ 為不隨時間變動的常數，因此可以移出時間平均：
+本節推導依 \textcite{bohren1983Absorption} 第三、四章；在蒙地卡羅模擬中逐次「先旋轉參考面、再乘穆勒矩陣」的做法見 \textcite{ramellaRoman2005ThreeMC} 與 \textcite{bartel2000MonteCarlo}。
+
+將式\eqref{eq:jones}代入式\eqref{eq:stokes_def}，得散射面座標下散射光與入射光斯托克斯向量的關係：
 \begin{equation}
-    E_{s\parallel} = f\, S_2\, E_{\parallel i}, \qquad E_{s\perp} = f\, S_1\, E_{\perp i}
-\end{equation}
-代入式\eqref{eq:stokes_def}，並用式\eqref{eq:stokes_inv}把入射場的二次量換成 $\mathbf{S}_i = (I_i, Q_i, U_i, V_i)^{T}$：
-\begin{align}
-    I_s &= |f|^2 \left( |S_2|^2 \langle |E_{\parallel i}|^2 \rangle + |S_1|^2 \langle |E_{\perp i}|^2 \rangle \right) = |f|^2 \left[ \tfrac{1}{2}\left( |S_2|^2 + |S_1|^2 \right) I_i + \tfrac{1}{2}\left( |S_2|^2 - |S_1|^2 \right) Q_i \right] \\
-    Q_s &= |f|^2 \left( |S_2|^2 \langle |E_{\parallel i}|^2 \rangle - |S_1|^2 \langle |E_{\perp i}|^2 \rangle \right) = |f|^2 \left[ \tfrac{1}{2}\left( |S_2|^2 - |S_1|^2 \right) I_i + \tfrac{1}{2}\left( |S_2|^2 + |S_1|^2 \right) Q_i \right]
-\end{align}
-對 $U_s$、$V_s$，令 $A = S_2 S_1^*$：
-\begin{align}
-    U_s &= 2\,\mathrm{Re}\left( |f|^2 A\, w_i \right) = |f|^2\, \mathrm{Re}\left[ A \left( U_i - iV_i \right) \right] = |f|^2 \left[ \mathrm{Re}(A)\, U_i + \mathrm{Im}(A)\, V_i \right] \\
-    V_s &= -2\,\mathrm{Im}\left( |f|^2 A\, w_i \right) = -|f|^2\, \mathrm{Im}\left[ A \left( U_i - iV_i \right) \right] = |f|^2 \left[ -\mathrm{Im}(A)\, U_i + \mathrm{Re}(A)\, V_i \right]
-\end{align}
-整理成矩陣形式：
-\begin{equation}
-    \mathbf{S}_s = \frac{1}{k^2 r^2} \mathbf{F}(\theta)\, \mathbf{S}_i, \qquad \mathbf{F} = \begin{pmatrix} F_{11} & F_{12} & 0 & 0 \\ F_{12} & F_{11} & 0 & 0 \\ 0 & 0 & F_{33} & F_{34} \\ 0 & 0 & -F_{34} & F_{33} \end{pmatrix} \label{eq:mueller}
+    \mathbf{S}_s = \frac{1}{k^2 r^2} \mathbf{F}(\theta)\, \mathbf{S}_i, \qquad \mathbf{F} = \begin{pmatrix} F_{11} & F_{12} & 0 & 0 \\ F_{12} & F_{11} & 0 & 0 \\ 0 & 0 & F_{33} & F_{34} \\ 0 & 0 & -F_{34} & F_{33} \end{pmatrix} , \label{eq:mueller}
 \end{equation}
 \begin{equation}
     \begin{aligned}
-        F_{11} &= \tfrac{1}{2}\left( |S_1|^2 + |S_2|^2 \right), \qquad & F_{12} &= \tfrac{1}{2}\left( |S_2|^2 - |S_1|^2 \right) \\
-        F_{33} &= \mathrm{Re}\left( S_2 S_1^* \right), \qquad & F_{34} &= \mathrm{Im}\left( S_2 S_1^* \right) = \tfrac{i}{2}\left( S_1 S_2^* - S_2 S_1^* \right)
+        F_{11} &= \tfrac{1}{2}\left( |S_1|^2 + |S_2|^2 \right), \qquad & F_{12} &= \tfrac{1}{2}\left( |S_2|^2 - |S_1|^2 \right), \\
+        F_{33} &= \mathrm{Re}\left( S_2 S_1^* \right), \qquad & F_{34} &= \mathrm{Im}\left( S_2 S_1^* \right) .
     \end{aligned}
 \end{equation}
-$\mathbf{F}$ 即球的穆勒（散射）矩陣。上面的推導只用到瓊斯關係式\eqref{eq:jones}是對角且線性的，並未假設入射光為完全偏振，所以對任意（含部分偏振或非偏振）的入射光皆成立。
+$\mathbf{F}$ 即球的穆勒矩陣，只有四個獨立元素。非偏振光入射時，散射強度正比於 $F_{11}(\theta)$，因此 $F_{11}(\theta)/\int F_{11}\,d\Omega$ 可作為蒙地卡羅模擬抽樣散射角的相位函數。
 
-\textbf{2. 性質}\\
-\begin{itemize}
-    \item[(1)] {獨立元素只有四個：$F_{11}, F_{12}, F_{33}, F_{34}$，它們由兩個複函數 $S_1, S_2$ 決定（四個實數自由度，扣除共同相位後剩三個）。因此四個元素之間有一個約束：
-        \begin{equation}
-            F_{11}^2 - F_{12}^2 = |S_1|^2 |S_2|^2 = F_{33}^2 + F_{34}^2 \quad \Rightarrow \quad F_{11}^2 = F_{12}^2 + F_{33}^2 + F_{34}^2
-        \end{equation}
-        這代表球的散射不產生去偏振（偏振度不下降）。}
-    \item[(2)] {非偏振入射 $\mathbf{S}_i = (I_i, 0, 0, 0)^{T}$ 時，$\mathbf{S}_s \propto I_i (F_{11}, F_{12}, 0, 0)^{T}$，散射光為部分線偏振，偏振度
-        \begin{equation}
-            P(\theta) = -\frac{F_{12}}{F_{11}} = \frac{|S_1|^2 - |S_2|^2}{|S_1|^2 + |S_2|^2}
-        \end{equation}
-        且 $U_s = V_s = 0$。}
-    \item[(3)] {$F_{11}$ 正比於非偏振光入射時的散射強度角分佈。由 (六) 節的 $C_{sca}$，
-        \begin{equation}
-            C_{sca} = \frac{1}{k^2} \int F_{11}(\theta)\, d\Omega \cdot 1 \quad \text{（對非偏振入射，且 $\int F_{12} \cos 2\phi\, d\phi = 0$）}
-        \end{equation}
-        所以 $p(\theta) = F_{11}(\theta) \big/ \int F_{11}\, d\Omega$ 可作為相位函數（Monte Carlo 抽樣散射角時使用）。}
-\end{itemize}
-
-\textbf{3. 檢驗：瑞利極限}\\
-$x \ll 1$ 時只有 $a_1$ 不可忽略（$b_1$ 與 $n \geq 2$ 的項更小）。由 $\pi_1 = 1$、$\tau_1 = \cos\theta$：
+穆勒矩陣只在散射面座標下具有式\eqref{eq:mueller}的形式。若入射光的斯托克斯向量 $\mathbf{S}_{lab}$ 以實驗室參考軸表示，須先旋轉到散射面再乘 $\mathbf{F}$：
 \begin{equation}
-    S_1 = \tfrac{3}{2} a_1, \qquad S_2 = \tfrac{3}{2} a_1 \cos\theta
+    \mathbf{S}_s = \frac{1}{k^2 r^2}\, \mathbf{F}(\theta)\, \mathbf{R}(\alpha)\, \mathbf{S}_{lab} ,
 \end{equation}
-\begin{equation}
-    F_{11} = \tfrac{9}{8} |a_1|^2 \left( 1 + \cos^2\theta \right), \quad F_{12} = -\tfrac{9}{8} |a_1|^2 \sin^2\theta, \quad F_{33} = \tfrac{9}{4} |a_1|^2 \cos\theta, \quad F_{34} = 0
-\end{equation}
-偏振度 $P = \sin^2\theta / (1 + \cos^2\theta)$，在 $\theta = 90^\circ$ 完全線偏振，這正是瑞利散射的標準結果，也滿足約束 $F_{11}^2 = F_{12}^2 + F_{33}^2$。
-
-\textbf{4. 一般入射光的完整關係}\\
-若入射光的斯托克斯向量 $\mathbf{S}_{lab}$ 以實驗室參考軸表示，則散射光（相對於散射面）為
-\begin{equation}
-    \mathbf{S}_s = \frac{1}{k^2 r^2}\, \mathbf{F}(\theta)\, \mathbf{R}(\alpha_i)\, \mathbf{S}_{lab}
-\end{equation}
-其中 $\alpha_i$ 為實驗室參考軸轉到散射面所需的角度（由式\eqref{eq:rot}定義，$x$ 偏振入射時的結果見 (七) 節 3）。若要在散射後再以新的實驗室參考軸表示，還需再乘上一個 $\mathbf{R}(\alpha_s)$，$\alpha_s$ 為散射面參考軸轉到新參考軸的角度。由於穆勒矩陣只在散射面座標下具有式\eqref{eq:mueller}的簡單形式，每次散射都必須先旋轉、後乘 $\mathbf{F}$。
+其中 $\alpha$ 為實驗室參考軸轉到散射面所需的角度。蒙地卡羅模擬每次散射都依此「先旋轉、再乘 $\mathbf{F}$」更新光子的斯托克斯向量。
