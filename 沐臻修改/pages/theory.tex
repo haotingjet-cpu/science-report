@@ -49,9 +49,9 @@ $g$ 越接近 $1$，散射光越集中於前向。
 穆勒矩陣為瓊斯矩陣\parencite{jones1941NewCalculus}經過克羅內克積後的結果\parencite{azzam1977Ellipsometry}
 \begin{align}
     \mathbf{M} &= \mathbf{A} \left(\mathbf{J}\otimes\mathbf{J}^*\right) \mathbf{A}^{-1}\\
-               &=\begin{bmatrix} S_{11}(\theta) & S_{12}(\theta) & 0 & 0 \\ S_{12}(\theta) & S_{11}(\theta) & 0 & 0 \\ 0 & 0 & S_{33}(\theta) & S_{34}(\theta) \\ 0 & 0 & -S_{34}(\theta) & S_{33}(\theta) \end{bmatrix}
+               &=\begin{bmatrix} F_{11}(\theta) & F_{12}(\theta) & 0 & 0 \\ F_{12}(\theta) & F_{11}(\theta) & 0 & 0 \\ 0 & 0 & F_{33}(\theta) & F_{34}(\theta) \\ 0 & 0 & -F_{34}(\theta) & F_{33}(\theta) \end{bmatrix}
 \end{align}
-其中$S_{11}=\frac{1}{2}(|S_1|^2+|S_2|^2),\ S_{12}=\frac{1}{2}(|S_2|^2-|S_1|^2),\ S_{33}=\frac{1}{2}(S_1S_2^* + S_1^2S_2),\ S_{34}=\frac{1}{2}(S_1S_2^* - S_1^2S_2)$
+其中$F_{11}=\frac{1}{2}(|S_1|^2+|S_2|^2),\ F_{12}=\frac{1}{2}(|S_2|^2-|S_1|^2),\ F_{33}=\frac{1}{2}(S_1S_2^* + S_1^*S_2),\ F_{34}=\frac{i}{2}(S_1S_2^* - S_1^*S_2)$
 
 \subsubsection*{光子散射後的斯托克向量}
 \begin{figure}[H]

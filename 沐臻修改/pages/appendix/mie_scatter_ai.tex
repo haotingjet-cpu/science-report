@@ -24,15 +24,6 @@
     \pi_n = \frac{P_n^1\left(\cos\theta\right)}{\sin\theta}, \qquad \tau_n = \frac{dP_n^1\left(\cos\theta\right)}{d\theta} .
 \end{equation}
 這些函數在球面上彼此正交，所以展開係數可以由內積直接求出\parencite{bohren1983Absorption}。
-以 $\pi_n$、$\tau_n$ 表示，$\ell=1$ 的四個向量球諧函數為（$\rho = kr$）
-\begin{equation}
-    \begin{aligned}
-    \mathbf{M}_{o1n} &= \cos\phi\, \pi_n z_n(\rho)\, \mathbf{e}_{\theta} - \sin\phi\, \tau_n z_n(\rho)\, \mathbf{e}_{\phi}, \\
-    \mathbf{M}_{e1n} &= -\sin\phi\, \pi_n z_n(\rho)\, \mathbf{e}_{\theta} - \cos\phi\, \tau_n z_n(\rho)\, \mathbf{e}_{\phi}, \\
-    \mathbf{N}_{e1n} &= \cos\phi\, n(n+1)\sin\theta\, \pi_n \frac{z_n(\rho)}{\rho}\, \mathbf{e}_r \\ &\quad + \cos\phi\, \tau_n \frac{\left[\rho z_n(\rho)\right]'}{\rho}\, \mathbf{e}_{\theta} - \sin\phi\, \pi_n \frac{\left[\rho z_n(\rho)\right]'}{\rho}\, \mathbf{e}_{\phi}, \\
-    \mathbf{N}_{o1n} &= \sin\phi\, n(n+1)\sin\theta\, \pi_n \frac{z_n(\rho)}{\rho}\, \mathbf{e}_r \\ &\quad + \sin\phi\, \tau_n \frac{\left[\rho z_n(\rho)\right]'}{\rho}\, \mathbf{e}_{\theta} + \cos\phi\, \pi_n \frac{\left[\rho z_n(\rho)\right]'}{\rho}\, \mathbf{e}_{\phi} .
-    \end{aligned}
-\end{equation}
 
 \subsubsection*{(四) 場的級數展開}
 沿 $+z$ 傳播、沿 $x$ 方向偏振的平面波，由正交關係可得只剩 $\mathbf{M}_{o1n}$ 與 $\mathbf{N}_{e1n}$ 兩組項：
@@ -45,10 +36,6 @@
     \mathbf{E}_1 = \sum_{n=1}^{\infty} E_n \left( c_n \mathbf{M}^{(1)}_{o1n} - i d_n \mathbf{N}^{(1)}_{e1n} \right) .
 \end{equation}
 上標 $(1)$、$(3)$ 分別代表徑向函數取 $j_n$ 與 $h_n^{(1)}$。
-散射場對應的磁場為
-\begin{equation}
-    \mathbf{H}_s = \frac{k}{\omega\mu} \sum_{n=1}^{\infty} E_n \left( i b_n \mathbf{N}^{(3)}_{o1n} + a_n \mathbf{M}^{(3)}_{e1n} \right) .
-\end{equation}
 
 \subsubsection*{(五) 散射係數與截面}
 把各場代入 (二) 的邊界條件，令尺寸參數 $x = ka$、相對折射率 $m = k_1/k$，並以 Riccati--Bessel 函數 $\psi_n(\rho) = \rho\, j_n(\rho)$、$\xi_n(\rho) = \rho\, h_n^{(1)}(\rho)$ 表示，解得米氏散射係數
