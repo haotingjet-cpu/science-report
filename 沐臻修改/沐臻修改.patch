@@ -1,5 +1,5 @@
---- a/pages/appendix.tex	2026-11-26 14:19:09
-+++ b/./pages/appendix.tex	2026-11-26 14:19:09
+--- a/pages/appendix.tex	2026-11-26 14:32:01
++++ b/pages/appendix.tex	2026-11-26 14:19:09
 @@ -1,6 +1,6 @@
  % 此為附錄
 -\subsection*{(一) 米氏散射導證} \hypertarget{subsec:mie}{}
@@ -10,8 +10,8 @@
 +\subsection*{二、穆勒矩陣與斯托克斯向量}
  \input{pages/appendix/muller.tex}
 \ No newline at end of file
---- a/pages/appendix/mie_scatter_ai.tex	2026-11-26 14:19:10
-+++ b/./pages/appendix/mie_scatter_ai.tex	2026-11-26 14:19:10
+--- a/pages/appendix/mie_scatter_ai.tex	2026-11-26 14:32:01
++++ b/pages/appendix/mie_scatter_ai.tex	2026-11-26 14:19:10
 @@ -1,299 +1,67 @@
 -% 米是散射
 -\subsubsection*{(一) 亥姆霍茲方程推導}
@@ -352,8 +352,8 @@
 -\end{equation}
 -級數在 $n$ 略大於 $x$ 之後迅速收斂，數值計算時通常取 $n_{max} \approx x + 4x^{1/3} + 2$。
 +級數在 $n$ 略大於 $x$ 之後迅速收斂，數值計算通常取 $n_{max} \approx x + 4x^{1/3} + 2$\parencite{bohren1983Absorption}。
---- a/pages/appendix/muller.tex	2026-11-26 14:19:10
-+++ b/./pages/appendix/muller.tex	2026-11-26 14:19:11
+--- a/pages/appendix/muller.tex	2026-11-26 14:32:01
++++ b/pages/appendix/muller.tex	2026-11-26 14:19:11
 @@ -5,6 +5,8 @@
  % 需要 amsmath, amssymb 與中文支援。
  
@@ -390,16 +390,38 @@
  \textbf{1. 由瓊斯矩陣推導}\\
  在散射面座標下，由式\eqref{eq:Es_pp}，令 $f = e^{ikr}/(-ikr)$，$|f|^2 = 1/(k^2r^2)$，且 $f$ 為不隨時間變動的常數，因此可以移出時間平均：
  \begin{equation}
---- a/pages/preface.tex	2026-11-26 14:19:11
-+++ b/./pages/preface.tex	2026-11-26 14:19:11
+--- a/pages/discussion_ai.tex	2026-11-26 14:32:01
++++ b/pages/discussion_ai.tex	2026-11-26 14:44:49
+@@ -6,7 +6,7 @@
+ 以 $\ln C$ 對 $\tau$ 作直線擬合，實驗斜率在 $2.16\,\mu\mathrm{m}$ 與 $0.492\,\mu\mathrm{m}$ 微球分別為 $-0.224$ 與 $-0.254$；模擬斜率則分別為 $-0.267$ 與 $-0.296$。兩者均支持較大粒徑的下降較慢，但差異僅約 $10\%$ 至 $15\%$。若下降速率只由 $1-g$ 決定，依兩者 $1-g$ 約 $1.95$ 倍的差異，較大粒徑的斜率絕對值應約為另一者的一半；實際結果並非如此。以 $\tau(1-g)$ 作為橫軸時，兩組曲線也未重合。這表示在本研究範圍內，平均異向性參數能說明趨勢方向，卻不足以單獨決定 $C$ 的下降速率；散射相位函數的其他角度細節仍有影響。此範圍的 $\tau(1-g)\leq1.5$，光子尚未進入完全擴散狀態。
+ 
+ \subsection*{二、實驗與模擬的差異}
+-當 $\tau\geq2$ 時，兩種粒徑的實驗 $C$ 均高於模擬；其中 $0.492\,\mu\mathrm{m}$ 在 $\tau=6$、$8$ 時的實驗／模擬比分別為 $1.30$、$1.27$。樣品管中的背景光應介於完全不扣空白與扣除全部空白兩種極端情形之間；檢查這兩種扣除方式後，差異仍無法消除。可能原因之一是前向角附近的連接線材反射部分散射光，使量得的前向強度偏高；此解釋仍需進一步實驗驗證。
++當 $\tau\geq2$ 時，兩種粒徑的實驗 $C$ 均高於模擬；其中 $0.492\,\mu\mathrm{m}$ 在 $\tau=6$、$8$ 時的實驗／模擬比分別為 $1.30$、$1.27$。樣品管中的背景光應介於完全不扣空白與扣除全部空白兩種極端情形之間；檢查這兩種扣除方式後，差異仍無法消除。可能原因是裝置反光：比色槽周圍的樂高零件與隨旋轉臂移動的線材，被樣品的散射光照亮後再反射進感測器（見參、十一）。圖~\ref{fig:shape} 顯示 $\tau\geq4$ 時偏差集中在前向，與此機制的方向一致。純水空白在臂角約 $40^\circ$ 有一個窄峰，對應線材橫過出射光束的位置，表示線材確實會被照到；但此峰僅約 $700$ 至 $1000$ 計數，遠小於 $2.16\,\mu\mathrm{m}$ 在 $\tau=4$、$6$ 時前向多出的約 $2500$ 至 $5900$ 計數，因此線材應只占一部分，其餘可能來自距比色槽更近的樂高零件。兩者的貢獻需以分步遮黑逐項量測：先包黑線材，再於管座與底座貼上黑絨布。
+ 
+ \subsection*{三、單一兩角強度比的限制}
+ 雖然相同 $\tau$ 下較大粒徑的 $C$ 較高，兩種粒徑的 $C$ 數值範圍仍互有重疊。例如，$0.492\,\mu\mathrm{m}$ 在 $\tau=0.5$ 時的 $C$ 約為 $12.1$，也可能對應到較大粒徑在較高光學厚度時的數值。原稿列出的 12 個樣品中有 9 個，存在不同粒徑與不同 $\tau$ 得到相同 $C$ 的情形。因此，單一 $C$ 無法同時唯一決定粒徑與濃度；若要由 $C$ 推估濃度，需先知道粒徑，或加入其他獨立量測資訊。
+--- a/pages/method/mie_measure.tex	2026-11-26 14:32:01
++++ b/pages/method/mie_measure.tex	2026-11-26 14:44:49
+@@ -53,4 +53,6 @@
+     \]
+     \item 每輪分別計算 $C=I_{\mathrm{net}}(30^\circ)/I_{\mathrm{net}}(125^\circ)$，再取兩輪平均。
+     \item 不確定度取三項平方和開根號：兩輪 $C$ 差的一半、改用另一次純水空白所造成差異的一半，以及角度整體偏移 $\pm0.5^\circ$ 所造成差異的一半。
+-\end{enumerate}
+\ No newline at end of file
++\end{enumerate}
++
++上述不確定度未包含裝置反光造成的系統誤差。比色槽周圍的樂高零件（管座、底座及旋轉臂靠近比色槽的部分）與隨旋轉臂移動的感測器線材，可能被樣品的散射光照亮，再將光反射進感測器。純水空白的散射光極弱，這些零件幾乎不會被照亮，因此扣除空白無法去除此項。由於前向散射遠強於後向，被照亮的主要是比色槽的前向側，預期會抬高小角度（如 $30^\circ$）的讀值而幾乎不影響 $125^\circ$，使 $C$ 偏高；光學厚度愈大，整支比色槽愈亮，影響也愈明顯。本研究尚未量測此項的大小，故不併入表一的不確定度，而於討論二與模擬結果一併說明。
+--- a/pages/preface.tex	2026-11-26 14:32:01
++++ b/pages/preface.tex	2026-11-26 14:19:11
 @@ -13,4 +13,4 @@
      \item[(三)] 比較實驗與蒙地卡羅模擬的結果。
  \end{itemize}
  \subsection*{三、文獻回顧}
 -已有研究指出，微塑膠的角度散射具有粒徑特徵~\cite{genc2023NumericalAnalysis}，也有研究以多角度光散射辨識聚苯乙烯微球粒徑~\cite{lotfiChoobbari2022BatchAnalysis}；然而，這些研究主要在稀薄、以單次散射為主的條件下進行。另一方面，蒙地卡羅模擬已用於描述聚苯乙烯懸浮液中的多重散射~\cite{berrocal2007LaserLightScattering}。對於單次散射過渡至多重散射的區間，兩個角度的強度比如何隨光學厚度改變，尚未見直接相關研究。因此，本研究以兩角強度比作為指標，探討其在不同粒徑與光學厚度下的變化，並以蒙地卡羅模擬與實驗互相比較。
 +已有研究指出，微塑膠的角度散射具有粒徑特徵\parencite{genc2023NumericalAnalysis}，也有研究以多角度光散射辨識聚苯乙烯微球粒徑\parencite{lotfiChoobbari2022BatchAnalysis}；然而，這些研究主要在稀薄、以單次散射為主的條件下進行。另一方面，蒙地卡羅模擬已用於描述聚苯乙烯懸浮液中的多重散射\parencite{berrocal2007LaserLightScattering}。對於單次散射過渡至多重散射的區間，兩個角度的強度比如何隨光學厚度改變，尚未見直接相關研究。因此，本研究以兩角強度比作為指標，探討其在不同粒徑與光學厚度下的變化，並以蒙地卡羅模擬與實驗互相比較。
---- a/pages/theory.tex	2026-11-26 14:19:12
-+++ b/./pages/theory.tex	2026-11-26 14:19:12
+--- a/pages/theory.tex	2026-11-26 14:44:25
++++ b/pages/theory.tex	2026-11-26 14:44:49
 @@ -41,12 +41,12 @@
  $g$ 越接近 $1$，散射光越集中於前向。
  
@@ -451,8 +473,8 @@
  \begin{equation}
      r_{p}=\frac{n_{2}\cos \theta _{1}-n_{1}\cos \theta _{2}}{n_{2}\cos \theta _{1}+n_{1}\cos \theta _{2}}
  \end{equation}
---- a/pages/theory/free_path.tex	2026-11-26 14:19:12
-+++ b/./pages/theory/free_path.tex	2026-11-26 14:19:12
+--- a/pages/theory/free_path.tex	2026-11-26 14:32:01
++++ b/pages/theory/free_path.tex	2026-11-26 14:19:12
 @@ -4,7 +4,7 @@
  
  \subsection*{1. 單粒子溶液的平均自由徑}
@@ -471,8 +493,8 @@
  \begin{equation}
      \frac{d P \left(x\right)}{dx}=-\frac{1}{\lambda} P(x)
  \end{equation}
---- a/references.bib	2026-11-26 14:19:13
-+++ b/./references.bib	2026-11-26 14:19:13
+--- a/references.bib	2026-11-26 14:32:01
++++ b/references.bib	2026-11-26 14:19:13
 @@ -20,7 +20,7 @@
  
  @article{berrocal2007LaserLightScattering,
